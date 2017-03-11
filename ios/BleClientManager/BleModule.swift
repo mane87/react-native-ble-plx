@@ -35,7 +35,8 @@ public class BleClientManager : NSObject {
     // Lifecycle -------------------------------------------------------------------------------------------------------
 
     public init(queue: DispatchQueue) {
-        manager = BluetoothManager(queue: queue)
+//        manager = BluetoothManager(queue: queue)
+        manager = BluetoothManager(queue: queue, options: [CBCentralManagerOptionRestoreIdentifierKey: "ZEIBluetoothManager" as AnyObject])
         super.init()
 
         disposeBag.insert(manager.rx_state.subscribe(onNext: { [weak self] newState in
